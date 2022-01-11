@@ -6,612 +6,110 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
      <link rel="stylesheet" type="text/css" media="screen" href="css/timeoutModal.css" />
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src='https://www.google.com/recaptcha/api.js'></script>
+
+    <title>Task</title>
   </head>
- <title>Task</title>
+  <body>
 
- <style type="text/css">
-   .carousel-control-prev, .carousel-control-next {
-  width: 30px;
-  height: 30px;
-  text-shadow: none;
-  top: 4px;
-}
-.carousel-control-prev i, .carousel-control-next i {
+ <style>
+.dropbtn {
+  background-color: #edeff2;
+  color: #000;
+  padding: 16px;
   font-size: 16px;
-}
-.carousel-control-prev {
-  left: auto;
-  right: 40px;
-}
-.carousel-control-next {
-  left: auto;
-}
-.adult-paediatric-b {
-  color: #FFFFFF;
-  font-family: Titillium-Bold;
-  font-size: 25px;
-
-  padding-top: 50px;
-}
-.haematology-oncolo {
-  color: #FFFFFF;
-  font-family: StagSans;
-  font-size: 25px;
-
+  
+  cursor: pointer;
 }
 
- </style>
+#myInput {
+  box-sizing: border-box;
+  background-image: url('search.png');
+  background-position: 14px 12px;
+  background-repeat: no-repeat;
+  font-size: 16px;
+  padding: 14px 20px 12px 45px;
+  border: 10px solid #edeff2;
+  
+}
 
-<section class="" style=" background-image: url('ABC/images/banner.png'); width: 100%; background-repeat:no-repeat; background-size:cover; background-position:center;   background-color: #FFFFFF;
-  box-shadow: -4px 2px 13px 0 rgba(85, 95, 126, 0.18);
-  width: 100%;height: auto;padding:20px 0px 20px 0px;">
-    <div class="container" style="padding-top: 30px;">
-    <div class="row">
-   
-       <div class="col-md-8">
- <a class="navbar-brand logo"  href="#"><img src="ABC/images/logo.png"  ></a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-    <div class="adult-paediatric-b">
-      <p><b>ADULT & PAEDIATRIC BONE MARROW TRANSPLANT PROGRAMME</b></p>
-    </div>
-    <div class="haematology-oncolo">
-    <p>Haematology | Oncology | Immunology</p>
+#myInput:focus {outline: 3px solid #ddd;}
 
-<a href="#" style="color:#fff; font-size: 12px; background-color: #DD5A6A;   border-radius: 3.2px;
-padding: 10px 20px 10px 20px;">
-Book An Appoinment</a>
-      </div>
-</div>
-   
-<div class="col-md-4" style="margin-top: 20px;">
-<div class="card" style="padding:30px 40px 30px 40px;">
-             
- <form action="mail.php" method="POST">
-    <p><b>Enquire now </b></p>
-      
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f6f6f6;
+  min-width: 230px;
+  overflow: auto;
+  border: 1px solid #ddd;
+  z-index: 1;
+}
 
-<form action="mail.php" method="POST">
- <input type="text" class="form-control" id="name" name="name" placeholder="Name"required style="width:100%;  color: #000; margin-bottom: 10px;">
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
 
+.dropdown a:hover {background-color: #ddd;}
 
-          <p style="margin-bottom:10px;" ></p>
-   <input type="text" class="form-control" id="email" name="email" placeholder="Email ID"required style="width:100%; color: #000; margin-bottom: 12px;">
+.show {display: block;}
+</style>
 
-
-    <p style="margin-bottom:10px;" ></p>
-   <input type="tel" class="form-control" id="phone" name="phone" placeholder="Phone number"required style="width:100%; color: #000;">
-
-    <p style="margin-bottom:10px;" ></p>
-<textarea id="form_message" name="message" class="form-control" placeholder="Your Message" rows="4" required="required" data-error="Please, leave us a message."></textarea>
-
-  <p style="margin-bottom:10px;" ></p>
-<div class="g-recaptcha" data-sitekey="6Les_LUUAAAAAOwAecAV2bvGOrePoZVQPLDOJcs_" data-callback="verifyRecaptchaCallback" data-expired-callback="expiredRecaptchaCallback"><div style="width: 304px; height: 78px;"><div><iframe title="reCAPTCHA" src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6Les_LUUAAAAAOwAecAV2bvGOrePoZVQPLDOJcs_&amp;co=aHR0cHM6Ly93d3cuaHRtbGhpbnRzLmNvbTo0NDM.&amp;hl=en&amp;v=-FJgYf1d3dZ_QPcZP7bd85hc&amp;size=normal&amp;cb=kd2wlsi0yqm" width="304" height="78" role="presentation" name="a-tseok2nnv8vq" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe></div><textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div><iframe style="display: none;"></iframe></div><br>
-
-<a href="#" style="color:#fff; font-size: 12px; background-color: #DD5A6A;   border-radius: 3.2px;
-padding: 10px 20px 10px 20px;">
-Submit</a>
-</div>
-</div>
-</div>
-</div>
-
-</form>
-
-
-</section>
-
-<section style="padding-top: 40px;">
-<div class="container">
+<div class="container"style="padding-top: 40px;" >
   <div class="row">
-    <div class="col-md-5">
-      <img src="ABC/images/Group 3.png" style="width: 100%;">
-    </div>
-    <div class="col-md-7">
-     <p style="background: linear-gradient(to right,#2EC4B8, #6078EA); color: #fff; font-size: 18px; padding: 20px; "><b>Bone Marrow Transplant (BMT) better known as haematopoietic stem cell transplant(HSCT) as bone marrow cells are transplanted</b></p>
-     <p style="font-size: 17px;">Replacement of diseased or defective marrow with marrow from a healthy donor<br><br>
-      Medicines and in certain situations radiotherapy as well is given to get rid of diseased marrow and bone marrow cells from healthy donor is given to replace it.<br><br>
-    IN autologous bone marrow transplant, high dose chemotherapy is given to kill cancer cells and child own marrow cells are given back</p>
-    </div>
-  </div>
-</div>
-</section>
-
-
-<section style="padding-top: 40px;">
-<div class="container">
-    <p style=" color: #22B78E;
-  font-family: StagSans;
-  font-size: 31px;"><b>Doctors</b></p>
-  <div class="row">
-    <div class="col-md-6" style="background-color: #F9F9FF;
-  border-radius: 4px; padding: 30px; width: 530px;">
-      <center> <p style=" color: #22B78E;
-  font-family: StagSans;
-  font-size: 24px;">Pediatric BMT</p></center>
-     <center>  <img src="ABC/images/Bitmap Copy.png"><br><br>
-       
-     <p><span style="color: #1D5AA6; font-size: 22px;"><b>Dr. Vijay Agarwal</b></span><br>
-      <span style="color: #1D5AA6; font-size: 15px;">MD, MRCP, PhD,CCT Lead & Sr. Consultant - Medical Oncology & Haematology</span><br>
-<span style="font-size: 15px;">Dr. Vijay Agarwal is a Senior Consultant Medical Oncologist with over 12 years of experience in Oncology. Dr. Agarwal has been practising Medical Oncology since 2004.</span></p>
-<a href="#" style="color:#fff;  background: linear-gradient(to right,#2EC4B8, #6078EA);   border-radius: 4px;
-padding: 10px 20px 10px 20px;">
-Know More</a>
-</center><br><br>
-     <center>  <img src="ABC/images/Bitmap Copy.png"><br><br>
-       
-     <p><span style="color: #1D5AA6; font-size: 22px;"><b>Dr. Vijay Agarwal</b></span><br>
-      <span style="color: #1D5AA6; font-size: 15px;">MD, MRCP, PhD,CCT Lead & Sr. Consultant - Medical Oncology & Haematology</span><br>
-<span style="font-size: 15px;">Dr. Vijay Agarwal is a Senior Consultant Medical Oncologist with over 12 years of experience in Oncology. Dr. Agarwal has been practising Medical Oncology since 2004.</span></p>
-<a href="#" style="color:#fff;  background: linear-gradient(to right,#2EC4B8, #6078EA);   border-radius: 4px;
-padding: 10px 20px 10px 20px;">
-Know More</a>
-</center>
-    </div>
-
-<div class="col-md-6" style="background-color: #F9F9FF;
-  border-radius: 4px; padding: 30px; width: 420px;">
-      <center> <p style=" color: #22B78E;
-  font-family: StagSans;
-  font-size: 24px;">Adult BMT</p></center>
-     <center>  <img src="ABC/images/Bitmap Copy.png"><br><br>
-       
-     <p><span style="color: #1D5AA6; font-size: 22px;"><b>Dr. Vijay Agarwal</b></span><br>
-      <span style="color: #1D5AA6; font-size: 15px;">MD, MRCP, PhD,CCT Lead & Sr. Consultant - Medical Oncology & Haematology</span><br>
-<span style="font-size: 15px;">Dr. Vijay Agarwal is a Senior Consultant Medical Oncologist with over 12 years of experience in Oncology. Dr. Agarwal has been practising Medical Oncology since 2004.</span></p>
-<a href="#" style="color:#fff;  background: linear-gradient(to right,#2EC4B8, #6078EA);   border-radius: 4px;
-padding: 10px 20px 10px 20px;">
-Know More</a>
-</center><br><br>
-     <center>  <img src="ABC/images/Bitmap Copy.png"><br><br>
-       
-     <p><span style="color: #1D5AA6; font-size: 22px;"><b>Dr. Vijay Agarwal</b></span><br>
-      <span style="color: #1D5AA6; font-size: 15px;">MD, MRCP, PhD,CCT Lead & Sr. Consultant - Medical Oncology & Haematology</span><br>
-<span style="font-size: 15px;">Dr. Vijay Agarwal is a Senior Consultant Medical Oncologist with over 12 years of experience in Oncology. Dr. Agarwal has been practising Medical Oncology since 2004.</span></p>
-<a href="#" style="color:#fff;  background: linear-gradient(to right,#2EC4B8, #6078EA);   border-radius: 4px;
-padding: 10px 20px 10px 20px;">
-Know More</a>
-</center>
-    </div>
-  </div>
-</div>
-</section>
-
-<section style="padding-top: 40px;">
-  <div class="container">
-    <div class="row">
-      <p style=" color: #22B78E;
-  font-family: 'StagSans';
-  font-size: 31px;"><b>What are the types of Bone Marrow Transplant?</b></p>
-      <div class="col-md-12">
-<img src="ABC/images/hospital.png"><span style="font-size: 14px;"> &nbsp &nbsp Autologous Bone Marrow Transplant - Marrow cells are collected from the patient’s own body and transfused back after high dose chemotherapy.</span><br><br>
-<img src="ABC/images/hospital.png"><span style="font-size: 14px;"> &nbsp &nbsp Allogenic Bone Marrow Transplant (Matched Sibling Donor) – Replacement of diseased or defective marrow with marrow from a genetically (HLA) matched sibling donor.</span><br><br>
-<img src="ABC/images/hospital.png"><span style="font-size: 14px;"> &nbsp &nbsp Allogenic Bone Marrow Transplant (Matched Unrelated Donor) – Replacement of diseased or defective marrow with marrow from a genetically (HLA) matched donor obtained from bone marrow registries in India and abroad.</span><br><br>
-<img src="ABC/images/hospital.png"><span style="font-size: 14px;"> &nbsp &nbsp Haplo-Identical Bone Marrow Transplant - Replacement of diseased or defective marrow with marrow from the parent. </span><br><br>
-<img src="ABC/images/hospital.png"><span style="font-size: 14px;"> &nbsp &nbsp Umbilical cord Bone Marrow Transplant - Replacement of diseased or defective marrow with marrow from a genetically (HLA) matched umbilical cord donor obtained from umbilical cord registries in India and abroad.</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section style="padding-top: 40px;">
-  <div class="container">
-    <p style=" color: #22B78E;
-  font-family: StagSans-Medium;
-  font-size: 31px;"><b>The warning signs of Immune deficiency</b></p>
-    <div class="row">
-      
-  <div class="col-md-3" style="margin-bottom: 20px;"> 
-  <div class="card" style="padding: 20px;   width: 255px;
-  height: 170px;">
-<img src="ABC/images/Group 2.png" style="width: 30px; height: 40px;"><br>
-<p style="font-size: 14px;">Failure to thrive – not gaining weight and height as per the age norms
-
-</p>
-  </div>
-</div>
-
-  <div class="col-md-3" style="margin-bottom: 20px;"> 
-  <div class="card" style="padding: 20px;   width: 255px;
-  height: 170px;">
-<img src="ABC/images/Group.png" style="width: 30px; height: 40px;"><br>
-<p style="font-size: 14px;">Infections warranting multiple hospitalizations</p>
-  </div>
-</div>
-
-
-  <div class="col-md-3" style="margin-bottom: 20px;"> 
-  <div class="card" style="padding: 20px;   width: 255px;
-  height: 170px;">
-<img src="ABC/images/Group (1).png" style="width: 30px; height: 40px;"><br>
-<p style="font-size: 14px;">Requirement of intravenous antibiotics to clear infections</p>
-</div>
-  </div>
-
-
-  <div class="col-md-3" style="margin-bottom: 20px;"> 
-  <div class="card" style="padding: 20px;   width: 255px;
-  height: 170px;">
-<img src="ABC/images/Group (2).png" style="width: 30px; height: 40px;"><br>
-<p style="font-size: 14px;">2 or more episodes of <br>pneumonia</p>
-</div>
-  </div>
-
-</div>
-
-    <div class="row" style="margin-bottom: 20px;">
-      
-  <div class="col-md-3" style="margin-bottom: 20px;"> 
-  <div class="card" style="padding: 20px;   width: 255px;
-  height: 170px;">
-<img src="ABC/images/Group5.png" style="width: 30px; height: 40px;"><br>
-<p style="font-size: 14px;">Family history of death of children at young age due to immune deficiency
-
-</p>
-  </div>
-</div>
-
-  <div class="col-md-3" style="margin-bottom: 20px;"> 
-  <div class="card" style="padding: 20px;   width: 255px;
-  height: 170px;">
-<img src="ABC/images/Group6.png" style="width: 30px; height: 40px;"><br>
-<p style="font-size: 14px;">Repeated episodes of diarrhea</p>
-  </div>
-</div>
-
-
-  <div class="col-md-3" style="margin-bottom: 20px;"> 
-  <div class="card" style="padding: 20px;   width: 255px;
-  height: 170px;">
-<img src="ABC/images/Group7.png" style="width: 30px; height: 40px;"><br>
-<p style="font-size: 14px;">2 or more episodes of sinus infections within a year</p>
-</div>
-  </div>
-
-
-  <div class="col-md-3" style="margin-bottom: 20px;"> 
-  <div class="card" style="padding: 20px;   width: 255px;
-  height: 170px;">
-<img src="ABC/images/Group8.png" style="width: 30px; height: 40px;"><br>
-<p style="font-size: 14px;">2 or more episodes of ear <br> discharge</p>
-</div>
-  </div>
-
-</div>
-
-    <div class="row">
-      
-  <div class="col-md-3" style="margin-bottom: 20px;"> 
-  <div class="card" style="padding: 20px;   width: 255px;
-  height: 170px;">
-<img src="ABC/images/Group9.png" style="width: 30px; height: 40px;"><br>
-<p style="font-size: 14px;">Repeated skin infections
-
-</p>
-  </div>
-</div>
-
-  <div class="col-md-3" style="margin-bottom: 20px;"> 
-  <div class="card" style="padding: 20px;   width: 255px;
-  height: 170px;">
-<img src="ABC/images/Group0.png" style="width: 30px; height: 40px;"><br>
-<p style="font-size: 14px;">Repeated abscess formation (liver abscess, brain abscess)</p>
-  </div>
-</div>
-
-</div>
-
-</div>
-</section>
-
-<section style="padding-top: 40px;">
-<div class="container">
-  <div class="accordion" id="accordionExample">
-  
-    <div class="card" style="margin-bottom: 20px; background: url(images/path.png) no-repeat calc(100% - 10px) center;cursor: pointer;">
-    <div class="card-head" id="headingOne">
-      <p style="  color: #1D5AA6;
-  font-family: StagSans;
-  font-size: 18px;
-  
-  text-align: left; padding: 20px;" class="mb-0" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          What are the conditions that requireBone Marrow Transplant?
-      </p>
-    </div>
-
-    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-      <div class="card-body" style="font-size: 14px; line-height: 30px;">
-     <i class="fa fa-check" style="color: green;"></i>&nbsp &nbsp BMT is the treatment of choice for blood disorders like Thalassemia, Sickle Cell anemia, bone marrow failure syndromes like Aplastic anemia, serious immune deficiencies and certain genetic metabolic disorders.<br> 
-     <i class="fa fa-check" style="color: green;"></i>&nbsp &nbsp It is also used to treat high risk cancers like some cases of Acute Lymphoblastic Leukemia, Acute Myeloid Leukemia, Multiple Myeloma and solid tumours like Neuroblastoma, Ewings Sarcoma and certain relapsed cancers like Lymphomas
-      </div>
-    </div>
-  </div>
-  
-    <div class="card" style="margin-bottom: 20px; background: url(ABC/images/path.png) no-repeat calc(100% - 10px) center;cursor: pointer;">
-    <div class="card-head" id="headingTwo">
-      <p style="  color: #1D5AA6;
-  font-family: StagSans;
-  font-size: 18px;
- padding: 20px; margin-bottom: 20px;" class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-    Which are the hematological diseases that may benefit from bone marrow transplants?
-      </p>
-    </div>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-      <div class="card-body" style="font-size: 14px; line-height: 30px;">
-     <i class="fa fa-check" style="color: green;"></i>&nbsp &nbsp BMT is the treatment of choice for blood disorders like Thalassemia, Sickle Cell anemia, bone marrow failure syndromes like Aplastic anemia, serious immune deficiencies and certain genetic metabolic disorders.<br> 
-     <i class="fa fa-check" style="color: green;"></i>&nbsp &nbsp It is also used to treat high risk cancers like some cases of Acute Lymphoblastic Leukemia, Acute Myeloid Leukemia, Multiple Myeloma and solid tumours like Neuroblastoma, Ewings Sarcoma and certain relapsed cancers like Lymphomas
-      </div>
-    </div>
-  </div>
-
- 
-    <div class="card" style="margin-bottom: 20px; background: url(ABC/images/path.png) no-repeat calc(100% - 10px) center;cursor: pointer;">
-    <div class="card-head" id="headingThree">
-      <p style="  color: #1D5AA6;
-  font-family: StagSans;
-  font-size: 18px;
- padding: 20px; margin-bottom: 20px;" class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-  Which are the Cancers that may benefit from bone marrow transplants?
-      </p>
-    </div>
-    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-      <div class="card-body" style="font-size: 14px; line-height: 30px;">
-     <i class="fa fa-check" style="color: green;"></i>&nbsp &nbsp BMT is the treatment of choice for blood disorders like Thalassemia, Sickle Cell anemia, bone marrow failure syndromes like Aplastic anemia, serious immune deficiencies and certain genetic metabolic disorders.<br> 
-     <i class="fa fa-check" style="color: green;"></i>&nbsp &nbsp It is also used to treat high risk cancers like some cases of Acute Lymphoblastic Leukemia, Acute Myeloid Leukemia, Multiple Myeloma and solid tumours like Neuroblastoma, Ewings Sarcoma and certain relapsed cancers like Lymphomas
-      </div>
-    </div>
-  </div>
-
-    <div class="card" style="margin-bottom: 20px; background: url(ABC/images/path.png) no-repeat calc(100% - 10px) center;cursor: pointer;">
-    <div class="card-head" id="headingFour">
-      <p style="  color: #1D5AA6;
-  font-family: StagSans;
-  font-size: 18px;
- padding: 20px; margin-bottom: 20px;" class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-    Do bone marrow failure syndromes require BMT?
-      </p>
-    </div>
-  <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
-       <div class="card-body" style="font-size: 14px; line-height: 30px;">
-     <i class="fa fa-check" style="color: green;"></i>&nbsp &nbsp BMT is the treatment of choice for blood disorders like Thalassemia, Sickle Cell anemia, bone marrow failure syndromes like Aplastic anemia, serious immune deficiencies and certain genetic metabolic disorders.<br> 
-     <i class="fa fa-check" style="color: green;"></i>&nbsp &nbsp It is also used to treat high risk cancers like some cases of Acute Lymphoblastic Leukemia, Acute Myeloid Leukemia, Multiple Myeloma and solid tumours like Neuroblastoma, Ewings Sarcoma and certain relapsed cancers like Lymphomas
-      </div>
-    </div>
-  </div>
-  
-     
-    <div class="card" style="margin-bottom: 20px; background: url(ABC/images/path.png) no-repeat calc(100% - 10px) center;cursor: pointer;">
-    <div class="card-head" id="headingFive">
-      <p style="  color: #1D5AA6;
-  font-family: StagSans;
-  font-size: 18px;
- padding: 20px; margin-bottom: 20px;" class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-   What are Primary Immune Deficiency diseases ?
-      </p>
-    </div>
-   <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
-       <div class="card-body" style="font-size: 14px; line-height: 30px;">
-     <i class="fa fa-check" style="color: green;"></i>&nbsp &nbsp BMT is the treatment of choice for blood disorders like Thalassemia, Sickle Cell anemia, bone marrow failure syndromes like Aplastic anemia, serious immune deficiencies and certain genetic metabolic disorders.<br> 
-     <i class="fa fa-check" style="color: green;"></i>&nbsp &nbsp It is also used to treat high risk cancers like some cases of Acute Lymphoblastic Leukemia, Acute Myeloid Leukemia, Multiple Myeloma and solid tumours like Neuroblastoma, Ewings Sarcoma and certain relapsed cancers like Lymphomas
-      </div>
-    </div>
-  </div>
-  
-      
-    <div class="card" style="margin-bottom: 20px; background: url(ABC/images/path.png) no-repeat calc(100% - 10px) center;cursor: pointer;">
-    <div class="card-head" id="headingSix">
-      <p style="  color: #1D5AA6;
-  font-family: StagSans;
-  font-size: 18px;
- padding: 20px; margin-bottom: 20px;" class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-   Which are the immune deficiencies that warrant BMT?
-      </p>
-    </div>
-    <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
-      <div class="card-body" style="font-size: 14px; line-height: 30px;">
-     <i class="fa fa-check" style="color: green;"></i>&nbsp &nbsp BMT is the treatment of choice for blood disorders like Thalassemia, Sickle Cell anemia, bone marrow failure syndromes like Aplastic anemia, serious immune deficiencies and certain genetic metabolic disorders.<br> 
-     <i class="fa fa-check" style="color: green;"></i>&nbsp &nbsp It is also used to treat high risk cancers like some cases of Acute Lymphoblastic Leukemia, Acute Myeloid Leukemia, Multiple Myeloma and solid tumours like Neuroblastoma, Ewings Sarcoma and certain relapsed cancers like Lymphomas
-      </div>
-    </div>
-  </div>
-  
-  
-     
-    <div class="card" style="margin-bottom: 20px; background: url(ABC/images/path.png) no-repeat calc(100% - 10px) center;cursor: pointer;">
-    <div class="card-head" id="headingSeven">
-      <p style="  color: #1D5AA6;
-  font-family: StagSans;
-  font-size: 18px;
- padding: 20px; margin-bottom: 20px;" class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-    What makes transplants at Aster CMI unique?
-      </p>
-    </div>
-    <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordionExample">
-    <div class="card-body" style="font-size: 14px; line-height: 30px;">
-     <i class="fa fa-check" style="color: green;"></i>&nbsp &nbsp BMT is the treatment of choice for blood disorders like Thalassemia, Sickle Cell anemia, bone marrow failure syndromes like Aplastic anemia, serious immune deficiencies and certain genetic metabolic disorders.<br> 
-     <i class="fa fa-check" style="color: green;"></i>&nbsp &nbsp It is also used to treat high risk cancers like some cases of Acute Lymphoblastic Leukemia, Acute Myeloid Leukemia, Multiple Myeloma and solid tumours like Neuroblastoma, Ewings Sarcoma and certain relapsed cancers like Lymphomas
-      </div>
-    </div>
-  </div>
-
+<div class="col-md-12">
+<button onclick="myFunction()" class="dropbtn">All Contacts &nbsp &nbsp <i class="fa fa-angle-down"></i></button> 
+  <div id="myDropdown" class="dropdown-content">
+<input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+    <a href="">C</a>
+    <a href="Charles">Charles</a>
+    <a href="Charles">Charlie</a>
+    <a href="">D</a>
+    <a href="Daniel">Daniel</a>
+    <a href="Diego">Diego</a>
+    <a href="">J</a>
+    <a href="James">James</a>
+    <a href="Jackson">Jackson</a>
+    <a href="Jayden">Jayden</a>
+    <a href="Jordan">Jordan</a>
+    <a href="Justus">Justus</a>
   </div>
 </div>
 </div>
-</section>
-
-<section style="padding-top: 40px;">
-  <div class="container">
-    <div class="row">
-      <p style=" color: #22B78E;
-  font-family: 'StagSans';
-  font-size: 31px;"><b>Testimonials</b></p>
 </div>
-  <p style="font-size: 15px;">It is a long established fact that a reader will be distracted by the readable content of a page <br> when looking at its layout.</p><br>
-
-
-</div>
-</section>
-
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12">     
-      <div id="myCarousel" class="carousel slide" data-ride="carousel">
-      
-       
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="row">
- 
-
-              <div class="col-sm-6" style=" background-color: #FFFFFF;
-  border-radius: 4px; box-shadow: 9px 8px 27px 0 rgba(0, 0, 0, 0.9);">
-
-                <div class="media">
-                  <img src="ABC/images/Bitmap.png" class="mr-3" alt="">
-                  <div class="media-body">
-              
-                   <span style="font-size: 22px;"> <b>John Doe</b> </span><br>
-                   <span style="font-size: 14px;">Softwere Engineer</span>
-                     
-                  </div>
-                </div><br>
-                        <div class="testimonial">
-                  <p style="font-size: 15px;">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-                </div>
-              </div>
-              <div class="col-sm-6" style=" background-color: #FFFFFF;
-  border-radius: 4px; box-shadow: 9px 8px 27px 0 rgba(0, 0, 0, 0.04);">
-               
-                <div class="media">
-               <img src="ABC/images/Bitmap.png" class="mr-3" alt="">
-                  <div class="media-body">
-                  <span style="font-size: 22px;"> <b>John Doe</b> </span><br>
-                   <span style="font-size: 14px;">Softwere Engineer</span>
-                  </div>
-                </div><br>
-                     <div class="testimonial">
-                <p style="font-size: 15px;">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-                </div>
-              
-              </div>
-            </div>      
-          </div>
-
-          <div class="carousel-item">
-            <div class="row">
-              <div class="col-sm-6" style=" background-color: #FFFFFF;
-  border-radius: 4px; box-shadow: 9px 8px 27px 0 rgba(0, 0, 0, 0.04);">
-   
-                <div class="media">
-               <img src="ABC/images/Bitmap.png" class="mr-3" alt="">
-                  <div class="media-body">
-                   <span style="font-size: 22px;"> <b>John Doe</b> </span><br>
-                   <span style="font-size: 14px;">Softwere Engineer</span>  
-                  </div>
-                </div><br>                     
-                       <div class="testimonial">
-                 <p style="font-size: 15px;">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-                </div>
-               
-              </div>
-              <div class="col-sm-6" style=" background-color: #FFFFFF;
-  border-radius: 4px; box-shadow: 9px 8px 27px 0 rgba(0, 0, 0, 0.04);">
-  
-                <div class="media">
-                  <img src="ABC/images/Bitmap.png" class="mr-3" alt="">
-                  <div class="media-body">
-                   <span style="font-size: 22px;"> <b>John Doe</b> </span><br>
-                   <span style="font-size: 14px;">Softwere Engineer</span>            
-                  </div>
-                </div><br>
-                <div class="testimonial">
-                   <p style="font-size: 15px;">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-                </div>
-
-              </div>
-            </div>      
-          </div>
-        
-        <!-- Carousel controls -->
-        <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
-         <i class="fa fa-long-arrow-left" style="color: #272727;"></i>
-        </a>
-        <a class="carousel-control-next" href="#myCarousel" data-slide="next">
-         <i class="fa fa-long-arrow-right" style="color: #272727;"></i>
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<section style="padding-top: 40px; padding-bottom: 40px;">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-      <center><a href="#" style="color:#fff; font-size: 18px;  background-color: #004498;
-  border-radius: 3.81px; padding: 10px 20px 10px 20px;">
-Book An Appoinment</a></center>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<section style="padding-top: 40px; padding-bottom: 60px; background-color:#272727;">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-      <center><a href="#"><img src="ABC/images/fb.png" style="width: 25px; height: 25px;"></a>
-        <a href="#"><img src="ABC/images/insta.png" style="width: 25px; height: 25px;"></a>
-        <a href="#"><img src="ABC/images/youtube.png" style="width: 25px; height: 25px;"></a>
-        <a href="#"><img src="ABC/images/twitter.png" style="width: 25px; height: 25px;"></a>
-        <a href="#"><img src="ABC/images/linkedin.png" style="width: 25px; height: 25px;"></a>
-        <button onclick="topFunction()" id="myBtn" title="Go to top" style="float: right; color: blue; font-size: 25px;"><i class="fa fa-angle-up"></i></button>
-      </center><br><br>
-      <hr>
-     <center> <p style="font-size: 14px; color: #fff;">Aster CMI. All Rights Reserved</p></center>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-
 
 <script>
-//Get the button
-var mybutton = document.getElementById("myBtn");
-
-// When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function() {scrollFunction()};
-
-function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    mybutton.style.display = "block";
-  } else {
-    mybutton.style.display = "none";
-  }
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
 }
 
-// When the user clicks on the button, scroll to the top of the document
-function topFunction() {
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
+function filterFunction() {
+  var input, filter, ul, li, a, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  div = document.getElementById("myDropdown");
+  a = div.getElementsByTagName("a");
+  for (i = 0; i < a.length; i++) {
+    txtValue = a[i].textContent || a[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      a[i].style.display = "";
+    } else {
+      a[i].style.display = "none";
+    }
+  }
 }
 </script>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
   </body>
 </html>
